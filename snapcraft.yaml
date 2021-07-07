@@ -1,0 +1,41 @@
+name: vim-language-server
+version: 2.2.3
+summary: VimScript Language Server
+description: |
+  language server for VimScript
+
+  **Features:**
+  - auto completion
+  - function signature help
+  - hover document
+  - go to definition
+  - go to references
+  - document symbols
+  - document highlight
+  - folding range
+  - select range
+  - rename
+  - snippets
+  - diagnostic
+
+grade: stable
+confinement: strict
+base: core20
+
+apps:
+  vim-language-server:
+    command: bin/vim-language-server
+
+parts:
+  vim-language-server:
+    plugin: npm
+    source: https://github.com/iamcco/vim-language-server.git
+    source-tag: v$SNAPCRAFT_PROJECT_VERSION
+    npm-node-version: 14.17.2
+    build-packages:
+      - npm
+    override-build: |
+      snapcraftctl build
+      npm install
+      npm run build
+      cp -r out $SNAPCRAFT_PART_INSTALL/lib/node_modules/vim-language-server/
