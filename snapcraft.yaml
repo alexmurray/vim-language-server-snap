@@ -25,6 +25,8 @@ base: core20
 apps:
   vim-language-server:
     command: bin/vim-language-server
+    plugs:
+      - home
 
 parts:
   vim-language-server:
