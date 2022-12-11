@@ -1,5 +1,5 @@
 name: vim-language-server
-version: 2.2.3
+version: 2.3.0
 summary: VimScript Language Server
 description: |
   language server for VimScript
@@ -33,7 +33,9 @@ parts:
     plugin: npm
     source: https://github.com/iamcco/vim-language-server.git
     source-tag: v$SNAPCRAFT_PROJECT_VERSION
-    npm-node-version: 14.17.3
+    build-environment:
+      - NODEJS_VERSION: "v18.12.1"
+    npm-node-version: $NODEJS_VERSION
     override-build: |
       snapcraftctl build
       # install the official nodejs so we get the expected npm version
@@ -46,7 +48,7 @@ parts:
       else
         ARCH=$SNAP_ARCH
       fi
-      curl -s https://nodejs.org/dist/v14.17.3/node-v14.17.3-linux-$ARCH.tar.gz | tar xzf - -C "$SNAPCRAFT_PART_INSTALL" --strip-components=1
+      curl -s https://nodejs.org/dist/"${NODEJS_VERSION}"/node-"${NODEJS_VERSION}"-linux-$ARCH.tar.gz | tar xzf - -C "$SNAPCRAFT_PART_INSTALL" --strip-components=1
       npm config set user 0
       npm config set unsafe-perm true
       npm install
