@@ -34,7 +34,7 @@ parts:
     source: https://github.com/iamcco/vim-language-server.git
     source-tag: v$SNAPCRAFT_PROJECT_VERSION
     build-environment:
-      - NODEJS_FIXED_VERSION: "v16.19.1"
+      - NODEJS_FIXED_VERSION: "v16.20.0"
     npm-node-version: $NODEJS_FIXED_VERSION
     override-build: |
       # install the official nodejs so we get the expected npm version
