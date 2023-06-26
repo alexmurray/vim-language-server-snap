@@ -1,5 +1,5 @@
 name: vim-language-server
-version: 2.3.0
+version: 2.3.1
 summary: VimScript Language Server
 description: |
   language server for VimScript
